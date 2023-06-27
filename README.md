@@ -40,9 +40,9 @@ where length > (select avg(length) from film);
 
 **Ответ:**
 ```
-select month(p.payment_date) as Месяц, sum(p.amount) as Получено, count(p.rental_id) as Аренды  
+select DATE_FORMAT(p.payment_date, '%Y-%M') as Месяц, sum(p.amount) as Получено, count(p.rental_id) as Аренды  
 from payment p
-group by month(p.payment_date)
+group by DATE_FORMAT(p.payment_date, '%Y-%M')
 order by sum(p.amount) desc
 limit 1;
 ```
